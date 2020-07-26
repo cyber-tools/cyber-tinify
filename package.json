@@ -1,0 +1,30 @@
+{
+  "name": "@cyber-tools/tinify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cli-spinners": "^2.4.0",
+    "colors": "^1.4.0",
+    "commander": "^6.0.0",
+    "es6-promisify": "^6.1.1",
+    "execa": "^4.0.3",
+    "glob": "^7.1.6",
+    "inquirer": "^7.3.3",
+    "jsonfile": "^6.0.1",
+    "module-alias": "^2.2.2",
+    "ora": "^4.0.5",
+    "progress": "^2.0.3",
+    "tinify": "^1.6.0-beta.2"
+  },
+  "devDependencies": {},
+  "bin": {
+    "cyber-tinify": "./index.js"
+  }
+}
