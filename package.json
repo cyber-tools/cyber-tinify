@@ -26,5 +26,9 @@
   "devDependencies": {},
   "bin": {
     "cyber-tinify": "./index.js"
+  },
+  "repository": {
+    "type": "github.com",
+    "url": "https://github.com/cyber-tools/cyber-tinify.git"
   }
 }
