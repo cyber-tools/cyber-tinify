@@ -5,13 +5,14 @@ const { yellow } = require("colors");
 const getAccount = require("@/utils/account/getAccount");
 const createProgress = require("@/utils/createProgress");
 
+
 module.exports = async (matchFiles = []) => {
-  const oProgress = createProgress({ total: matchFiles.length });
   const accountInfo = await getAccount();
   tinify.key = accountInfo.SecretKey;
+  const oProgress = createProgress({ total: matchFiles.length });
   try {
     toast.succeed(["共匹配到(", matchFiles.length, ")个文件"].join(""));
-    const taskList = matchFiles.map(async (filePath) => {
+    const masterTask = matchFiles.map(async (filePath) => {
       try {
         const relativePath = filePath.replace(process.cwd(), "");
         await tinify.fromFile(filePath).toFile(filePath);
@@ -20,7 +21,7 @@ module.exports = async (matchFiles = []) => {
         throw error;
       };
     });
-    await Promise.all(taskList);
+    await Promise.all(masterTask);
     toast.succeed("complate!");
   } catch (error) {
     throw error;

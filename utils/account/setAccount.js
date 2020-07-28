@@ -1,6 +1,7 @@
 const { writeFile } = require("jsonfile");
+const { localAccountFile } = require("@/configs/runtime.config");
 const inputAccountInfo = require("@/utils/account/inputAccountInfo");
-const { localAccountFile } = require("./configs");
+
 
 module.exports = async function setSecret() {
   try {

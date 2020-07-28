@@ -1,7 +1,7 @@
 const open = require("open");
 const exists = require("path-exists");
 const setAccount = require("@/utils/account/setAccount");
-const { localAccountFile } = require("@/utils/account/configs");
+const { localAccountFile } = require("@/configs/runtime.config");
 
 module.exports = async function viewAccount() {
   try {

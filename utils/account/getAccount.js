@@ -2,7 +2,7 @@ const pathExists = require("path-exists");
 const { readFile } = require("jsonfile");
 
 const setAccount = require("@/utils/account/setAccount");
-const { localAccountFile } = require("./configs");
+const { localAccountFile } = require("@/configs/runtime.config");
 
 module.exports = async function getAccount() {
   try {
