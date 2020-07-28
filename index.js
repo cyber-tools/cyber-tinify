@@ -11,12 +11,28 @@ program
 program
   .command("init")
   .description("初始化配置文件")
-  .action(require("@/actions/initial-config"));
+  .action(require("@/actions/initialConfig"));
+
+program
+  .command("view")
+  .description("登录到tinipng")
+  .action(require("@/actions/viewAccount"));
+
+
+program
+  .command("login")
+  .description("登录到tinipng")
+  .action(require("@/actions/login"));
+
+program
+  .command("logout")
+  .description("登出tinipng")
+  .action(require("@/actions/logout"));
 
 program
   .command("start")
   .description("开始压缩图片")
-  .action(require("@/actions/start-tinify"))
+  .action(require("@/actions/startTinify"))
 
 program.parse(process.argv);
 
