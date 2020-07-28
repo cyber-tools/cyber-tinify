@@ -1,6 +1,6 @@
 const getMatchFiles = require("@/scripts/getMatchFiles");
 const tinifyProcess = require("@/scripts/tinifyProcess");
-const getTinifyConfig = require("@/utils/getTinifyConfig");
+const getTinifyConfig = require("@/utils/usually/getTinifyConfig");
 
 
 module.exports = async () => {

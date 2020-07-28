@@ -1,13 +1,12 @@
 const toast = require("ora")();
 const tinify = require("tinify");
 const { yellow } = require("colors");
-const ProgressBar = require("progress");
 
 const getAccount = require("@/utils/account/getAccount");
+const createProgress = require("@/utils/createProgress");
 
 module.exports = async (matchFiles = []) => {
-  const progressStyle = "[:bar] (:current/:total) :pathName";
-  const oProgress = new ProgressBar(progressStyle, { total: matchFiles.length });
+  const oProgress = createProgress({ total: matchFiles.length });
   const accountInfo = await getAccount();
   tinify.key = accountInfo.SecretKey;
   try {

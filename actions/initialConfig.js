@@ -3,7 +3,7 @@ const path = require("path");
 const { promisify } = require("es6-promisify");
 
 const toast = require("@/utils/toast");
-const hasConfigFile = require("@/utils/hasConfigFile");
+const hasConfigFile = require("@/utils/usually/hasConfigFile");
 
 module.exports = async () => {
   if (await hasConfigFile()) {
