@@ -1,13 +1,25 @@
-const getMatchFiles = require("@/scripts/getMatchFiles");
-const tinifyProcess = require("@/scripts/tinifyProcess");
-const getTinifyConfig = require("@/utils/usually/getTinifyConfig");
+const toast = require("@/utils/toast");
+const { fromPairs } = require("lodash");
+const beforeTinify = require("@/scripts/beforeTinify");
+const tinifySingle = require("@/scripts/tinifySingle");
+const writeLocalRecord = require("@/utils/record/writeLocalRecord");
 
 
 module.exports = async () => {
   try {
-    const configs = getTinifyConfig();
-    const matchFiles = await getMatchFiles(configs);
-    await tinifyProcess(matchFiles);
+    toast.start("正在压缩... ...");
+    const { matchFiles, progress } = await beforeTinify();
+    const masterTask = matchFiles.map(async ({ filePath, fileSign }) => {
+      try {
+        const result = await tinifySingle(filePath, progress)
+        return [fileSign, result];
+      } catch (error) {
+        throw error;
+      };
+    });
+    const masterTaskResult = fromPairs(await Promise.all(masterTask));
+    await writeLocalRecord(masterTaskResult);
+    toast.succeed("压缩完成!");
   } catch (error) {
     throw error;
   };
