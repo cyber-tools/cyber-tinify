@@ -15,7 +15,7 @@ program
 
 program
   .command("view")
-  .description("登录到tinipng")
+  .description("查看登录信息")
   .action(require("@/actions/viewAccount"));
 
 
