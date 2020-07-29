@@ -1,0 +1,7 @@
+/src/
+/assets/
+/example/
+.gitignore
+.babelrc.js
+.eslintignore
+package-lock.json
