@@ -11,8 +11,8 @@ module.exports = async () => {
     const { matchFiles, progress } = await beforeTinify();
     const masterTask = matchFiles.map(async ({ filePath, originFileSign }) => {
       try {
-        const { afterFilePath, result } = await tinifySingle(filePath, progress)
-        return [afterFilePath, result];
+        const { afterFileSign, ...otherMessage } = await tinifySingle({ filePath, originFileSign }, progress)
+        return [afterFileSign, otherMessage];
       } catch (error) {
         throw error;
       };

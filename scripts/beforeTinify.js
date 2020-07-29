@@ -1,4 +1,5 @@
 const tinify = require("tinify");
+const dotProp = require("dot-prop");
 const toast = require("@/utils/toast");
 const getFileSign = require("@/utils/getFileSign");
 const getMatchFiles = require("@/utils/getMatchFiles");
@@ -19,7 +20,8 @@ module.exports = async () => {
     const masterTask = matchFiles.map(async (filePath) => {
       try {
         const originFileSign = await getFileSign(filePath);
-        return localRecord[originFileSign] ? null : { filePath, originFileSign };
+        const result = dotProp.get(localRecord[originFileSign], "result");
+        return result ? null : { filePath, originFileSign };
       } catch (error) {
         throw error;
       };
