@@ -9,10 +9,10 @@ module.exports = async () => {
   try {
     toast.start("正在压缩... ...");
     const { matchFiles, progress } = await beforeTinify();
-    const masterTask = matchFiles.map(async ({ filePath, fileSign }) => {
+    const masterTask = matchFiles.map(async ({ filePath, originFileSign }) => {
       try {
-        const result = await tinifySingle(filePath, progress)
-        return [fileSign, result];
+        const { afterFilePath, result } = await tinifySingle(filePath, progress)
+        return [afterFilePath, result];
       } catch (error) {
         throw error;
       };

@@ -14,18 +14,21 @@ module.exports = async () => {
     const accountInfo = await getAccount();
     tinify.key = accountInfo.SecretKey;
     const localRecord = await readLocalRecord();
+
     const matchFiles = await getMatchFiles(configs);
     const masterTask = matchFiles.map(async (filePath) => {
       try {
-        const fileSign = await getFileSign(filePath);
-        return localRecord[fileSign] ? false : { filePath, fileSign };
+        const originFileSign = await getFileSign(filePath);
+        return localRecord[originFileSign] ? null : { filePath, originFileSign };
       } catch (error) {
         throw error;
       };
     });
+
     const afterFilter = (await Promise.all(masterTask)).filter(Boolean);
     const oProgress = createProgress({ total: afterFilter.length });
     toast.succeed(["共匹配到(", afterFilter.length, ")个文件"].join(""));
+
     return { matchFiles: afterFilter, progress: oProgress };
   } catch (error) {
     throw error;
