@@ -1,7 +1,7 @@
 {
   "name": "@cyber-tools/tinify",
   "version": "2.0.2",
-  "description": "",
+  "description": "基于tinipng的openAPI开发的图片批处理压缩脚本",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
