@@ -1,6 +1,7 @@
 /src/
 /assets/
 /example/
+**/.DS_Store
 .gitignore
 .babelrc.js
 .eslintignore
